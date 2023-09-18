@@ -80,9 +80,9 @@ Route::get('/result', function (Request $request) {
     return "Pseudo saisi : " . $pseudo;
 });
 
-Route::middleware([VerifAge::class])->group(function(){
-    Route::get(uri:'result');
-});
+// Route::middleware([VerifAge::class])->group(function(){
+//     Route::get(uri:'result');
+// });
 
 
 
