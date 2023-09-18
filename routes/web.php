@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Page2Controller;
 use App\Http\Controllers\HomeController;
@@ -61,6 +63,26 @@ Route::get('/show/{name?}',[HomeController::class,'show']);
 
 Route::get('/article/{n?}',[ArticleController::class,'show']);
 
+
+
+//partie middleware
+Route::get('/form', function () {
+    return view('form');
+});
+
+
+// Traite les données du formulaire
+Route::get('/result', function (Request $request) {
+    // Récupère la valeur du champ de saisie 'pseudo'
+    $pseudo = $request->input('pseudo');
+
+    // Affiche la valeur du champ de saisie (le middleware TrimStrings aura été appliqué)
+    return "Pseudo saisi : " . $pseudo;
+});
+
+Route::middleware([VerifAge::class])->group(function(){
+    Route::get(uri:'result');
+});
 
 
 
