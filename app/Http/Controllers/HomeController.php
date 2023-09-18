@@ -11,7 +11,11 @@ class HomeController extends Controller
         return "Bonjour 5Twin";
     }
 
-    public function show(){
-        return view('Home.show');
+    // public function show(){
+    //     return view('Home.show');
+    // }
+
+    public function show($name =null){
+        return view('Home.show',['name'=>$name]);
     }
 }

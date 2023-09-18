@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Page2Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
+
 
 
 
@@ -54,7 +56,11 @@ Route::get('/page2/{name?}',[Page2Controller::class,'greeting'])
 
 
 Route::get('/home',[HomeController::class,'index']);
-Route::get('/show',[HomeController::class,'show']);
+Route::get('/show/{name?}',[HomeController::class,'show']);
+
+
+Route::get('/article/{n?}',[ArticleController::class,'show']);
+
 
 
 
