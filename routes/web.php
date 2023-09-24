@@ -45,11 +45,16 @@ Route::get('/bonjour',[WelcomeController::class,'greet']);
 
 
 Route::get('/page1', function (){
-    return view('page1');
+    return view('page1',['title'=>'my first page']) ;
 });
 
-Route::get('/p2/{name}', function ($name){
-    return ('welcome'.' '.$name );
+Route::get('/page2/{name}/{id?}', function ($name ,$id=null){
+    return view('page2',['name'=>$name , 'id'=>$id]) ;
+});
+
+
+Route::get('/p2/{name}/{classe}', function ($name,$classe){
+    return ('welcome'.' '.$name.' '.$classe );
 });
 
 Route::get('/page2/{name?}',[Page2Controller::class,'greeting'])
@@ -57,7 +62,9 @@ Route::get('/page2/{name?}',[Page2Controller::class,'greeting'])
 
 
 
+
 Route::get('/home',[HomeController::class,'index']);
+
 Route::get('/show/{name?}',[HomeController::class,'show']);
 
 
@@ -80,9 +87,36 @@ Route::get('/result', function (Request $request) {
     return "Pseudo saisi : " . $pseudo;
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Route::middleware([VerifAge::class])->group(function(){
 //     Route::get(uri:'result');
 // });
 
+// Route::get('/middelware/{age}', function ($age) {
+//     return view('welcome');
+// })->middelware('VerifAge') ;
 
 
